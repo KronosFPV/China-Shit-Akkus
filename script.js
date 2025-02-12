@@ -43,6 +43,7 @@ document.getElementById('addPosition').addEventListener('click', function() {
     // Entfernen der Position
     newPosition.querySelector('.removePosition').addEventListener('click', function() {
         positionsContainer.removeChild(newPosition);
+        calculateTotal(); // Gesamtpreis neu berechnen nach dem Entfernen
     });
 
     positionsContainer.appendChild(newPosition);

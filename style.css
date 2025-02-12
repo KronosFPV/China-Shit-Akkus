@@ -52,3 +52,16 @@ button:hover {
 #positionsContainer {
     margin-bottom: 20px;
 }
+
+.removePosition {
+    background-color: #f44336;
+    margin-top: 10px;
+}
+
+.removePosition:hover {
+    background-color: #e53935;
+}
+
+#currencyLabel, #shippingLabel, #taxLabel {
+    font-weight: bold;
+}

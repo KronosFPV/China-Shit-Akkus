@@ -122,6 +122,4 @@ function calculateTotal() {
 
     // Anzeigen der Steuern und Versandkosten
     document.getElementById('totalPrice').textContent = total.toFixed(2);
-    document.getElementById('shippingLabel').textContent = `Versandkosten: ${totalShipping.toFixed(2)} ${currency}`;
-    document.getElementById('taxLabel').textContent = `MwSt.: ${totalTax.toFixed(2)} ${currency}`;
-}
+    document.getElementById('shippingLabel').

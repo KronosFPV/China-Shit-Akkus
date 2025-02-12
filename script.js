@@ -33,7 +33,14 @@ document.getElementById('addPosition').addEventListener('click', function() {
 
         <label for="quantity">Menge:</label>
         <input type="number" class="quantity" required>
+
+        <button type="button" class="removePosition">Position entfernen</button>
     `;
+
+    // Entfernen der Position
+    newPosition.querySelector('.removePosition').addEventListener('click', function() {
+        positionsContainer.removeChild(newPosition);
+    });
 
     positionsContainer.appendChild(newPosition);
 
@@ -59,15 +66,17 @@ document.getElementById('batteryForm').addEventListener('submit', function(event
 
 function calculateTotal() {
     let total = 0;
+    let shippingCost = parseFloat(document.getElementById('shippingCost').value);
+    const country = document.getElementById('country').value;
+
+    let totalTax = 0;
+    let totalShipping = 0;
+
     const positions = document.querySelectorAll('.position');
 
     positions.forEach(position => {
-        const batteryType = position.querySelector('.batteryType').value;
         const price = parseFloat(position.querySelector('.price').value);
         const quantity = parseInt(position.querySelector('.quantity').value);
-        
-        const country = document.getElementById('country').value;
-        const shippingCost = parseFloat(document.getElementById('shippingCost').value);
 
         let taxRate = 0;
 
@@ -76,14 +85,24 @@ function calculateTotal() {
         if (country === 'CH') taxRate = 0.081;
 
         let subtotal = price * quantity;
-        subtotal += subtotal * taxRate;
+        let tax = subtotal * taxRate;
+        let positionTotal = subtotal + tax;
 
-        total += subtotal;
+        total += positionTotal;
+
+        // Aufschlüsselung
+        totalTax += tax;
+        totalShipping = shippingCost;
     });
 
-    const shippingCost = parseFloat(document.getElementById('shippingCost').value);
-    total += shippingCost;
+    // Gesamtbetrag berechnen
+    total += totalShipping;
 
+    // Währung und Ergebnis anzeigen
+    const currency = document.querySelector('.currency').value;
+    const currencyLabel = document.getElementById('currencyLabel');
+    currencyLabel.textContent = `Gesamtpreis in ${currency}:`;
+
+    // Anzeigen der Steuern und Versandkosten
     document.getElementById('totalPrice').textContent = total.toFixed(2);
-}
-
+    document.getElementById('shippingLabel').textContent = `Versandkosten:

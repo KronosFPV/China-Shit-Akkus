@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batterie Preis Rechner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Batterie Preis Rechner</h1>
+        <form id="batteryForm">
+            <label for="batteryType">Battery Type:</label>
+            <select id="batteryType" required>
+                <option value="Lipo">Lipo</option>
+                <option value="Li-Ion 6s1p">Li-Ion 6s1p</option>
+                <option value="Li-Ion 6s2p">Li-Ion 6s2p</option>
+                <option value="Li-Ion 6s3p">Li-Ion 6s3p</option>
+            </select>
+
+            <div id="ionOptions" class="hidden">
+                <label for="ionType">Ion Type:</label>
+                <select id="ionType">
+                    <option value="P45B">P45B</option>
+                    <option value="P50B">P50B</option>
+                    <option value="custom">Eigene Eingabe</option>
+                </select>
+            </div>
+
+            <label for="currency">Währung:</label>
+            <select id="currency" required>
+                <option value="USD">US Dollar</option>
+                <option value="CHF">CHF</option>
+                <option value="EUR">Euro</option>
+            </select>
+
+            <label for="price">Preis pro Battery Pack (in Währung):</label>
+            <input type="number" id="price" required>
+
+            <label for="quantity">Menge:</label>
+            <input type="number" id="quantity" required>
+
+            <button type="button" onclick="addPosition()">Position hinzufügen</button>
+
+            <div id="positionsContainer"></div>
+
+            <label for="country">Empfängerland:</label>
+            <select id="country" required>
+                <option value="DE">Deutschland</option>
+                <option value="AT">Österreich</option>
+                <option value="CH">Schweiz</option>
+            </select>
+
+            <label for="shippingCost">Versandkosten:</label>
+            <input type="number" id="shippingCost" required>
+
+            <button type="submit">Berechnen</button>
+        </form>
+
+        <h2>Gesamtpreis: <span id="totalPrice">0</span></h2>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

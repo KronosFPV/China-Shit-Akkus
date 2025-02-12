@@ -10,39 +10,42 @@
     <div class="container">
         <h1>Batterie Preis Rechner</h1>
         <form id="batteryForm">
-            <label for="batteryType">Battery Type:</label>
-            <select id="batteryType" required>
-                <option value="Lipo">Lipo</option>
-                <option value="Li-Ion 6s1p">Li-Ion 6s1p</option>
-                <option value="Li-Ion 6s2p">Li-Ion 6s2p</option>
-                <option value="Li-Ion 6s3p">Li-Ion 6s3p</option>
-            </select>
+            <div id="positionsContainer">
+                <!-- Hier werden Positionen dynamisch hinzugefügt -->
+                <div class="position">
+                    <label for="batteryType">Battery Type:</label>
+                    <select class="batteryType" required>
+                        <option value="Lipo">Lipo</option>
+                        <option value="Li-Ion 6s1p">Li-Ion 6s1p</option>
+                        <option value="Li-Ion 6s2p">Li-Ion 6s2p</option>
+                        <option value="Li-Ion 6s3p">Li-Ion 6s3p</option>
+                    </select>
 
-            <div id="ionOptions" class="hidden">
-                <label for="ionType">Ion Type:</label>
-                <select id="ionType">
-                    <option value="P45B">P45B</option>
-                    <option value="P50B">P50B</option>
-                    <option value="custom">Eigene Eingabe</option>
-                </select>
+                    <div class="ionOptions hidden">
+                        <label for="ionType">Ion Type:</label>
+                        <select class="ionType">
+                            <option value="P45B">P45B</option>
+                            <option value="P50B">P50B</option>
+                            <option value="custom">Eigene Eingabe</option>
+                        </select>
+                    </div>
+
+                    <label for="currency">Währung:</label>
+                    <select class="currency" required>
+                        <option value="USD">US Dollar</option>
+                        <option value="CHF">CHF</option>
+                        <option value="EUR">Euro</option>
+                    </select>
+
+                    <label for="price">Preis pro Battery Pack (in Währung):</label>
+                    <input type="number" class="price" required>
+
+                    <label for="quantity">Menge:</label>
+                    <input type="number" class="quantity" required>
+                </div>
             </div>
 
-            <label for="currency">Währung:</label>
-            <select id="currency" required>
-                <option value="USD">US Dollar</option>
-                <option value="CHF">CHF</option>
-                <option value="EUR">Euro</option>
-            </select>
-
-            <label for="price">Preis pro Battery Pack (in Währung):</label>
-            <input type="number" id="price" required>
-
-            <label for="quantity">Menge:</label>
-            <input type="number" id="quantity" required>
-
-            <button type="button" onclick="addPosition()">Position hinzufügen</button>
-
-            <div id="positionsContainer"></div>
+            <button type="button" id="addPosition">Position hinzufügen</button>
 
             <label for="country">Empfängerland:</label>
             <select id="country" required>
@@ -63,3 +66,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
